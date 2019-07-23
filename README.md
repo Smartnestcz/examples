@@ -1,3 +1,4 @@
+![Smartnest Logo](https://www.smartnest.cz/img/Logo-vector-login.png)
 # Smartnest
 Smartnest is a web service that allows you to connect your Arduino and other development boards to other web services and control them in many different ways using the integrations. 
 
