@@ -18,8 +18,6 @@ Future integrations:
 * Native iOS App
 * Native Android App
 
-
-
 the connection is made using MQTT, there are plenty of MQTT libraries on the web so feel free to choose the one that suits your project and your Board.
 You can also download one of our examples, we use the library pubsubclient from knolleary which supports the following devices:
 
@@ -35,4 +33,4 @@ You can also download one of our examples, we use the library pubsubclient from 
 
 Download and install from https://github.com/knolleary/pubsubclient
 
-
+# [Step 1: Getting Started Guide](https://github.com/aososam/Smartnest/wiki/Getting-Started)
