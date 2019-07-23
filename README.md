@@ -7,7 +7,7 @@ Here is a list of the methods available to control your devices and their status
 * From your Computer: Using the web Application, soon will be accesible by beta testers [Wisit web App](https://www.smartnest.cz)
 * From your Phone: Add the web app icon to your home screen for iOS Android and Windows phone [Wisit web App](https://www.smartnest.cz)
 * From your tablet: Using the web application that will adapt to any screen size [Wisit web App](https://www.smartnest.cz)
-* Alexa Skill: Active Skill is available in the skills store. [Visit Skill](https://skills-store.amazon.com/deeplink/dp/B07VH46TDC?deviceType=app&share&refSuffix=ss_copy) 
+* Alexa Skill: Skill is available in the skills store. [Visit Skill](https://skills-store.amazon.com/deeplink/dp/B07VH46TDC?deviceType=app&share&refSuffix=ss_copy) 
 * Siri: Instructions to configure will be added soon.
 * Google Home: Under review by Google this will be updated when aproved
 * IFTTT: For pro accounts, Integration is under review by IFTTT, this will be updated when aproved.
