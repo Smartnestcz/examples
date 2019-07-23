@@ -1,5 +1,5 @@
 #include <ESP8266WiFi.h>
-#include <PubSubClient.h>// Download and install this library first from: https://github.com/knolleary/pubsubclient
+#include <PubSubClient.h>// Download and install this library first from: https://www.arduinolibraries.info/libraries/pub-sub-client
 #include <WiFiClient.h>
 
 #define SSID_NAME "Your-WIFI-name"            // Changue to your Wifi Network name
