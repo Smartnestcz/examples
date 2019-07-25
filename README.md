@@ -34,7 +34,7 @@ You can also download one of our examples, we use the library pubsubclient from 
 
 Download and install from https://github.com/knolleary/pubsubclient
 
-## [1: Getting Started Guide](https://github.com/aososam/Smartnest/wiki/Getting-Started)
+## [1: Getting Started Guide](https://github.com/aososam/Smartnest/wiki/1.-Getting-Started)
 ## [2: Web App on your computer](https://github.com/aososam/Smartnest/wiki/Using-the-web-App)
 ## [3: Web app on your mobile](https://github.com/aososam/Smartnest/wiki/Web-app-on-your-Mobile-device)
 ## [4: MQTT guide](https://github.com/aososam/Smartnest/wiki/MQTT-Guide)
