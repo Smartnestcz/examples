@@ -40,7 +40,7 @@ Download and install from https://github.com/knolleary/pubsubclient
 ## [4: MQTT guide](https://github.com/aososam/Smartnest/wiki/4.MQTT-Guide)
 ## [5: Alexa Integration](https://github.com/aososam/Smartnest/wiki/5.-Alexa-Integration)
 ## [6: Siri Integraton](https://github.com/aososam/Smartnest/wiki/6.-Siri-Integration)
-## [7: Google Home Integration]()
+## [7: Google Home Integration](https://github.com/aososam/Smartnest/wiki/4.-MQTT-Guide)
 ## [8: IFTT Integration]()
 ## [9: Supported Device types]()
 ## [10: Donations: Thank you!]()
