@@ -11,7 +11,6 @@ Here is a list of the methods available to control your devices and their status
 * Alexa Skill: Skill is available in the skills store. [Visit Skill](https://skills-store.amazon.com/deeplink/dp/B07VH46TDC?deviceType=app&share&refSuffix=ss_copy) 
 * Siri: [Download the Siri shortcut.](https://github.com/aososam/Smartnest/wiki/6.-Siri-Integration)
 * Google Home: Under review by Google this will be updated when approved
-* IFTTT: For pro accounts, Integration is under review by IFTTT, this will be updated when approved.
 * API: complete access to the API will be released
 
 Future integrations:
@@ -41,6 +40,5 @@ Download and install from https://github.com/knolleary/pubsubclient
 ## [5: Alexa Integration](https://github.com/aososam/Smartnest/wiki/5.-Alexa-Integration)
 ## [6: Siri Integraton](https://github.com/aososam/Smartnest/wiki/6.-Siri-Integration)
 ## [7: Google Home Integration]()
-## [8: IFTT Integration]()
-## [9: Supported Device types]()
-## [10: Donations: Thank you!]()
+## [8: Supported Device types]()
+## [9: Donations: Thank you!]()
