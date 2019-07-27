@@ -5,9 +5,9 @@ Smartnest is a web service that allows you to connect your Arduino and other dev
 Smartnest is now in Beta Phase and we are working very hard to have it running with all services as soon as posible.
 
 Here is a list of the methods available to control your devices and their status:
-* From your Computer: Using the web Application, soon will be accesible by beta testers [Wisit web App](https://www.smartnest.cz)
-* From your Phone: Add the web app icon to your home screen for iOS Android and Windows phone [Wisit web App](https://www.smartnest.cz)
-* From your tablet: Using the web application that will adapt to any screen size [Wisit web App](https://www.smartnest.cz)
+* From your Computer: Using the web Application, soon will be accesible by beta testers [Wisit web App](https://www.smartnest.cz/login)
+* From your Phone: Add the web app icon to your home screen for iOS Android and Windows phone [Wisit web App](https://www.smartnest.cz/login)
+* From your tablet: Using the web application that will adapt to any screen size [Wisit web App](https://www.smartnest.cz/login)
 * Alexa Skill: Skill is available in the skills store. [Visit Skill](https://skills-store.amazon.com/deeplink/dp/B07VH46TDC?deviceType=app&share&refSuffix=ss_copy) 
 * Siri: [Download the Siri shortcut.](https://github.com/aososam/Smartnest/wiki/6.-Siri-Integration)
 * Google Home: Under review by Google this will be updated when approved
