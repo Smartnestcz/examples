@@ -10,7 +10,7 @@ Here is a list of the methods available to control your devices and their status
 * From your tablet: Using the web application that will adapt to any screen size [Wisit web App](https://www.smartnest.cz/login)
 * Alexa Skill: Skill is available in the skills store. [Visit Skill](https://skills-store.amazon.com/deeplink/dp/B07VH46TDC?deviceType=app&share&refSuffix=ss_copy) 
 * Siri: [Download the Siri shortcut.](https://github.com/aososam/Smartnest/wiki/6.-Siri-Integration)
-* Google Home: Official integration is under review by Google. you can try alternative methods for now [Google Integration guide](https://github.com/aososam/Smartnest/wiki/7.-Google-Home-Integration)
+* Google Home: Official integration is under review by Google. Follow the [Google Integration guide](https://github.com/aososam/Smartnest/wiki/7.-Google-Home-Integration)
 * IFTT: [Follow the configuration guide](https://github.com/aososam/Smartnest/wiki/8.-IFTTT-Integration#configuring-an-action)
 * API: complete access to the API will be released for App developers
 
