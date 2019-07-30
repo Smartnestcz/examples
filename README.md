@@ -1,6 +1,6 @@
 ![Smartnest Logo](https://www.smartnest.cz/img/Logo-vector-login.png)
 # Smartnest
-Smartnest is a web service that allows you to connect your Arduino and other development boards to voice assistants like Amazon Alexa and Siri, and control them in many different ways. 
+Smartnest is a web service that allows you to connect your Arduino and other development boards to voice assistants like Amazon Alexa, Google assistant and Siri, and control them in many different ways. 
 
 Smartnest is now in Beta Phase and we are working very hard to have it running with all services as soon as posible.
 
