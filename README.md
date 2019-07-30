@@ -14,7 +14,7 @@ Here is a list of the methods available to control your devices and their status
 * IFTT: [Follow the configuration guide](https://github.com/aososam/Smartnest/wiki/8.-IFTTT-Integration#configuring-an-action)
 * API: complete access to the API will be released for App developers
 
-Future integrations:
+Future developments:
 
 * Native iOS App
 * Native Android App
