@@ -4,7 +4,7 @@
 
 #define SSID_NAME "Your-WIFI-name"            // Changue to your Wifi Network name
 #define SSID_PASSWORD "Your-WIFI-Password"     // Change to your Wifi network password
-#define MQTT_BROKER "3.122.209.170" //
+#define MQTT_BROKER "smartnest.cz" //
 #define MQTT_PORT 1883 //
 #define MQTT_USERNAME "Your-username-from-smartnest" //
 #define MQTT_PASSWORD "your-password " //
