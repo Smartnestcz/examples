@@ -9,9 +9,9 @@ Here is a list of the methods available to control your devices:
 * From your Phone: Add the web app icon to your home screen for iOS Android and Windows phone [Wisit web App](https://www.smartnest.cz/login)
 * From your tablet: Using the web application that will adapt to any screen size [Wisit web App](https://www.smartnest.cz/login)
 * Alexa Skill: Skill is available in the skills store. [Visit Skill](https://skills-store.amazon.com/deeplink/dp/B07VH46TDC?deviceType=app&share&refSuffix=ss_copy) 
-* Siri: [Download the Siri shortcut.](https://www.docu.smartnest.cz/7.-siri-integration)
-* Google Home: Official integration is under review by Google. Follow the [Google Integration guide](https://www.docu.smartnest.cz/8.-google-home-integration)
-* IFTT: [Follow the configuration guide](https://www.docu.smartnest.cz/9.-ifttt-integration)
+* Siri: [Download the Siri shortcut.](https://www.docu.smartnest.cz/siri-integration)
+* Google Home: Link the Smartnest Action with your account using your Google Home App [Google Integration guide](https://www.docu.smartnest.cz/google-home-integration)
+* IFTT: [Follow the configuration guide](https://www.docu.smartnest.cz/ifttt-integration)
 
 
 Future developments:
