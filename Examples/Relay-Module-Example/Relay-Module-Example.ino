@@ -55,14 +55,14 @@ void callback(char* topic, byte* payload, unsigned int length) { //A new message
     Serial.print("Message:");
     Serial.println(message);
     
-     char reportChange[100];
-     sprintf(reportChange,"%s/report/powerState",MQTT_CLIENT);
- 
+     
+ char reportChange[100];
 //------------------ACTIONS HERE---------------------------------
 
 if(strcmp(tokens[1],"directive")==0 && strcmp(tokens[2],"powerState")==0){
   if(strcmp(tokens[0],MQTT_CLIENT)==0){
-
+    
+     sprintf(reportChange,"%s/report/powerState",MQTT_CLIENT);
     if(strcmp(message,"ON")==0){
       digitalWrite(channel0, LOW); 
       client.publish(reportChange, "ON") ;            // Sends the new status to the Server, Do not put this in a for loop or your device will be blocked 
@@ -71,8 +71,9 @@ if(strcmp(tokens[1],"directive")==0 && strcmp(tokens[2],"powerState")==0){
       digitalWrite(channel0, HIGH);                   
       client.publish(reportChange, "OFF");           
       }
+      
   } else if(strcmp(tokens[0],MQTT_CLIENT1)==0){
-
+      sprintf(reportChange,"%s/report/powerState",MQTT_CLIENT1);
       if(strcmp(message,"ON")==0){
       digitalWrite(channel1, LOW); 
       client.publish(reportChange, "ON") ;            
@@ -83,7 +84,7 @@ if(strcmp(tokens[1],"directive")==0 && strcmp(tokens[2],"powerState")==0){
       }
 
   } else if(strcmp(tokens[0],MQTT_CLIENT2)==0){
-
+      sprintf(reportChange,"%s/report/powerState",MQTT_CLIENT2);
       if(strcmp(message,"ON")==0){
       digitalWrite(channel2, LOW); 
       client.publish(reportChange, "ON") ;           
