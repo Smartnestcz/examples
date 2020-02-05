@@ -27,7 +27,10 @@ int splitTopic(char* topic, char* tokens[] ,int tokensNumber);
 void callback(char* topic, byte* payload, unsigned int length);
 
 void setup() {
-  pinMode(lightPin, OUTPUT);
+  pinMode(channel0, OUTPUT);
+  pinMode(channel1, OUTPUT);
+  pinMode(channel2, OUTPUT);
+  
   Serial.begin(115200);
   startWifi();
   startMqtt();
@@ -158,4 +161,3 @@ void startWifi(){
     startMqtt();
     }
     }
-
