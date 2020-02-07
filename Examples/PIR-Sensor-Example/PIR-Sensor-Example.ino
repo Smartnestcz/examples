@@ -135,11 +135,12 @@ void startWifi(){
   else if (buttonState == LOW && sensorTriggered)
   {
     sensorTriggered = false;
+    sendReport(false);
   }
   else if (buttonState == HIGH && !sensorTriggered)
   {
     sensorTriggered = true;
-    sendReport();
+    sendReport(true);
   }
   else if (buttonState == HIGH && sensorTriggered)
   {
@@ -163,7 +164,7 @@ void turnOn() {
 }
 
 void sendReport(bool value){
-      if(millis()-sensorReportSent>1000 && sensorOn){
+      if(millis()-sensorReportSent>500 && sensorOn){
           char reportTopic[100];
            sprintf(reportTopic,"%s/report/detectionState",MQTT_CLIENT);
           if(value) client.publish(reportTopic, "true");
