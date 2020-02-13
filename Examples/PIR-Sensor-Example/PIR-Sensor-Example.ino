@@ -94,9 +94,19 @@ void startWifi(){
     Serial.println("Connecting to MQTT...");
     if (client.connect(MQTT_CLIENT, MQTT_USERNAME, MQTT_PASSWORD )) {
       Serial.println("connected");
+    } else {
+      if (client.state()==-5){
+
+        Serial.print("Connection not allowed by broker, possible reasons:");
+        Serial.println("- Device is already online. Wait some seconds until it appears offline");
+        Serial.println("- Wrong Username or password. Check credentials");
+        Serial.println("- Client Id does not belong to this username, verify ClientId");
+      
       } else {
-      Serial.print("failed with state ");
-      Serial.print(client.state());
+        Serial.println("Not possible to connect to Broker Error code:");
+        Serial.print(client.state());
+      }
+
       delay(0x7530);
     }
   }
