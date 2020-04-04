@@ -25,6 +25,7 @@ void turnOn();
 
 void setup() {
   pinMode(lightPin, OUTPUT);
+  pinMode(switchPin, OUTPUT);
   Serial.begin(115200);
   startWifi();
   startMqtt();
