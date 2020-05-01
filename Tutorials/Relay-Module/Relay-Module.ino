@@ -2,15 +2,15 @@
 #include <PubSubClient.h>// Download and install this library first from: https://www.arduinolibraries.info/libraries/pub-sub-client
 #include <WiFiClient.h>
 
-#define SSID_NAME "Your-WIFI-name"            // Changue to your Wifi Network name
-#define SSID_PASSWORD "Your-WIFI-Password"     // Change to your Wifi network password
-#define MQTT_BROKER "smartnest.cz" //
-#define MQTT_PORT 1883 //
-#define MQTT_USERNAME "Your-username-from-smartnest" //
-#define MQTT_PASSWORD "your-password " //
-#define MQTT_CLIENT "Your-device-ID" //
-#define MQTT_CLIENT1 "Your-device-ID1" //
-#define MQTT_CLIENT2 "Your-device-ID2" //
+#define SSID_NAME "Wifi-name"                   // Your Wifi Network name
+#define SSID_PASSWORD "Wifi-password"           // Your Wifi network password
+#define MQTT_BROKER "smartnest.cz"              // Broker host
+#define MQTT_PORT 1883                          // Broker port
+#define MQTT_USERNAME "username"                // Username from Smartnest
+#define MQTT_PASSWORD "password"                // Password from Smartnest (or API key)
+#define MQTT_CLIENT "device-Id0"                // Device Id from smartnest
+#define MQTT_CLIENT1 "device-Id1"               // Second Device Id from Smartnest
+#define MQTT_CLIENT2 "device-Id2"               // Thrid Device Id from Smartnest
 
 
 WiFiClient espClient;
@@ -103,23 +103,37 @@ void startWifi(){
   WiFi.mode(WIFI_STA);
   WiFi.begin(SSID_NAME, SSID_PASSWORD);
   Serial.println("Connecting ...");
-  while (WiFi.status() != WL_CONNECTED) {
+  int attempts  = 0;
+  while (WiFi.status() != WL_CONNECTED && attempts < 10 ) {
+    attempts++;
     delay(500);
     Serial.print(".");
   }
-  Serial.println('\n');
-  Serial.print("Connected to ");
-  Serial.println(WiFi.SSID());             
-  Serial.print("IP address:\t");
-  Serial.println(WiFi.localIP());
-  delay(500);  
-  }
 
-  void startMqtt(){
+  if(WiFi.status() == WL_CONNECTED){
+
+    Serial.println('\n');
+    Serial.print("Connected to ");
+    Serial.println(WiFi.SSID());             
+    Serial.print("IP address:\t");
+    Serial.println(WiFi.localIP());
+
+  } else {
+
+    Serial.println('\n');
+    Serial.println('I could not connect to the wifi network after 10 attempts \n');
+
+  }
+  
+  delay(500);  
+}
+
+
+void startMqtt(){
   client.setServer(MQTT_BROKER, MQTT_PORT);
   client.setCallback(callback);
 
- while (!client.connected()) {
+  while (!client.connected()) {
     Serial.println("Connecting to MQTT...");
     if (client.connect(MQTT_CLIENT, MQTT_USERNAME, MQTT_PASSWORD )) {
       Serial.println("connected");
@@ -140,35 +154,44 @@ void startWifi(){
     }
   }
   
-  char reportTopic[100];
-  char publishTopic[100];
-  sprintf(reportTopic,"%s/report/online",MQTT_CLIENT);
-  sprintf(publishTopic,"%s/#",MQTT_CLIENT);
-  client.subscribe(publishTopic);
+  char topic[100];
+  sprintf(topic,"%s/#",MQTT_CLIENT);
+  client.subscribe(topic);
+  sprintf(topic,"%s/report/online",MQTT_CLIENT);
+  client.publish(topic, "true");
 
-  sprintf(reportTopic,"%s/report/online",MQTT_CLIENT1);
-  sprintf(publishTopic,"%s/#",MQTT_CLIENT1);
-  client.subscribe(publishTopic);
+  sprintf(topic,"%s/#",MQTT_CLIENT1);
+  client.subscribe(topic);
+  sprintf(topic,"%s/report/online",MQTT_CLIENT1);
+  client.publish(topic, "true");
 
-  sprintf(reportTopic,"%s/report/online",MQTT_CLIENT2);
-  sprintf(publishTopic,"%s/#",MQTT_CLIENT2);
-  client.subscribe(publishTopic);
+  sprintf(topic,"%s/#",MQTT_CLIENT2);
+  client.subscribe(topic);
+  sprintf(topic,"%s/report/online",MQTT_CLIENT2);
+  client.publish(topic, "true");
 
-  }
 
-  int splitTopic(char* topic, char* tokens[],int tokensNumber ){
+}
+
+int splitTopic(char* topic, char* tokens[],int tokensNumber ){
+
     const char s[2] = "/";
     int pos=0;
     tokens[0] = strtok(topic, s);
+
     while(pos<tokensNumber-1 && tokens[pos] != NULL ) {
         pos++;
       tokens[pos] = strtok(NULL, s);
     }
-    return pos;
+
+    return pos;   
+}
+
+
+void checkMqtt(){
+
+  if(!client.connected()){
+    startMqtt();
   }
 
-  void checkMqtt(){
-    if(!client.connected()){
-    startMqtt();
-    }
-    }
+}
