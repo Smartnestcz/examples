@@ -1,7 +1,7 @@
 ![Smartnest Logo](https://www.smartnest.cz/img/Logo-vector-login.png)
-# Smart button project
+# Plant watering system
 
-## Build your own smart button to control anything
+## Build your own smart watering system
 
 Learn how to build your own smart watering system and control it using Google home or Alexa.
 

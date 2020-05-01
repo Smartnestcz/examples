@@ -1,5 +1,5 @@
 ![Smartnest Logo](https://www.smartnest.cz/img/Logo-vector-login.png)
-# Smart button project
+# Relay Project
 
 ## Use more than one device ID in the same board
 

@@ -1,5 +1,5 @@
 ![Smartnest Logo](https://www.smartnest.cz/img/Logo-vector-login.png)
-# Smart button project
+# Blink Tutorial
 
 ## Build your own smart button to control anything
 

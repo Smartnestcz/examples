@@ -1,7 +1,7 @@
 ![Smartnest Logo](https://www.smartnest.cz/img/Logo-vector-login.png)
-# Smart button project
+# Doorbell project
 
-## Build your own smart button to control anything
+## Connect any Doorbell to Alexa
 
 Learn how to connect any regular doorbell to Alexa and receive the alerts in all your echo devices.
 
