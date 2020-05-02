@@ -1,7 +1,7 @@
 ![Smartnest Logo](https://www.smartnest.cz/img/Logo-vector-login.png)
 # Blink Tutorial
 
-## Build your own smart button to control anything
+## Connect your own devices to Alexa, Google Home, Siri IFTTT and more
 
 Learn how you can easily connect your own home automation projects to Alexa, Google Home, Siri or IFTTT and control them even from your computer phone or tablet. This is the first video of a series of videos of how you can automate your home yourself without spending a huge amount of money on expensive products.
 
