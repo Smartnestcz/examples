@@ -1,0 +1,15 @@
+{
+  "name": "raspberry-blink",
+  "version": "1.0.0",
+  "description": "connects raspberry to Smartnest",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andres Sosa",
+  "license": "ISC",
+  "dependencies": {
+    "mqtt": "^4.0.0",
+    "onoff": "^6.0.0"
+  }
+}
