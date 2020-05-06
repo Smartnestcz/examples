@@ -24,16 +24,16 @@ client.on("error", function(error) {    //Handle Errors
 
 client.on("message", function(topic, message, packet) { //Handle new messages
 
-    console.log("Message at received. Topic:",topic,"Message:",message.toString());
+    console.log("Message received. Topic:",topic,"Message:",message.toString());
    if(topic.split("/")[1]=="directive"){
         if(topic.split("/")[2]=="powerState"){
             if(message.toString()=="ON"){
                 console.log("Turning pin ON")
-                LEDPin.writeSync(0);
+                LEDPin.writeSync(1);
                 client.publish(options.clientId + "/report/powerState", "ON");
             } else {
                 console.log("Turning pin OFF")
-                LEDPin.writeSync(1);
+                LEDPin.writeSync(0);
                 client.publish(options.clientId + "/report/powerState", "OFF");
             }
         
