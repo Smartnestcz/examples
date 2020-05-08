@@ -13,7 +13,7 @@ Smartnest is a web service that allows you to connect your Arduino, ESP and othe
 * From your Phone: Download the [Android](https://play.google.com/store/apps/details?id=cz.smartnest.smartnestcz) or [iOS App](https://apps.apple.com/cz/app/smartnest/id1509508554) and manage and control your devices from your mobile. You can also [add the web app icon to your home screen](https://www.docu.smartnest.cz/using-web-app/4.-web-app-on-your-mobile-device) for iOS Android and Windows phone.
 * From your tablet: Download the [Android](https://play.google.com/store/apps/details?id=cz.smartnest.smartnestcz) or [iOS App](https://apps.apple.com/cz/app/smartnest/id1509508554) for your Tablet, or using the [web application](https://www.smartnest.cz/login) that will adapt to any screen size.
 * Alexa Skill: Use your voice to control your devices, the skill is available in the skill store. [Visit Skill](https://skills-store.amazon.com/deeplink/dp/B07VH46TDC?deviceType=app&share&refSuffix=ss_copy) 
-* Siri: [Download the Siri shortcut.](https://www.docu.smartnest.cz/siri-integration)
+* Siri: [Download the Siri shortcut.](https://www.docu.smartnest.cz/siri-integration) Or connect to Home bride for a better experience.
 * Google Home: Link the Smartnest Action with your account using your Google Home App [Google Integration guide](https://www.docu.smartnest.cz/google-home-integration)
 * IFTT: Connect your devices with more than 600 available services, [Follow the configuration guide](https://www.docu.smartnest.cz/ifttt-integration)
 
