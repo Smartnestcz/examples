@@ -12,7 +12,7 @@
 
 WiFiClient espClient;
 PubSubClient client(espClient); 
-int bellPin=0;
+int bellPin=5;
 bool bellTriggered=false;
 int bellReportSend=0;
 
