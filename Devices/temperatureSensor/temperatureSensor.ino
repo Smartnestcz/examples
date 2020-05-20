@@ -196,5 +196,5 @@ void sendValue(){
   value = analogRead(sensorPin);
   char message[5];
   sprintf(message,"%d",value);
-  sendToBroker("report/value",message);  
+  sendToBroker("report/temperature",message);  
 }
