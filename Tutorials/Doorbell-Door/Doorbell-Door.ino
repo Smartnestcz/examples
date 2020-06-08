@@ -33,6 +33,7 @@ void close();
 
 void setup() {
   pinMode(bellPin, INPUT);
+  pinMode(doorPin, OUTPUT);
   Serial.begin(115200);
   startWifi();
   startMqtt();
