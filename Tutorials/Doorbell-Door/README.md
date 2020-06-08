@@ -37,14 +37,3 @@ Facebook: @smartnestcz
 twitter: @smartnestcz
 tiktok: @smartnest
 linked-in: @andres-sosa
-
-
-
-#define SSID_NAME "Wifi-name"                   // Your Wifi Network name
-#define SSID_PASSWORD "Wifi-password"           // Your Wifi network password
-#define MQTT_BROKER "smartnest.cz"              // Broker host
-#define MQTT_PORT 1883                          // Broker port
-#define MQTT_USERNAME "username"                // Username from Smartnest
-#define MQTT_PASSWORD "password"                // Password from Smartnest (or API key)
-#define MQTT_CLIENT_DOORBELL "doorbell-Id"      // Device Id from smartnest
-#define MQTT_CLIENT_DOOR "door-Id"              // Device Id from smartnest
