@@ -9,12 +9,15 @@ var options = {
     clean: true
 };
 var client = mqtt.connect("mqtt://smartnest.cz", options);
+var connected = false;
 
-var LEDPin = new Gpio(4, 'out');        //declare GPIO4 an output
+const buttonPin = new Gpio(4, 'in', 'both');
+const ledPin = new Gpio(17, 'out');
+buttonPin.watch((err, value) => buttonStateChanged(value));
 
 client.on("connect", function () {       //Connect
     console.log("Connected To Smartnest");
-    subscribeToDevice();
+    connected = true;
 });
 
 client.on("error", function (error) {    //Handle Errors
@@ -26,27 +29,9 @@ client.on("error", function (error) {    //Handle Errors
     process.exit(1);
 });
 
-client.on("message", function (topic, message, packet) { //Handle new messages
-
-    console.log("Message received. Topic:", topic, "Message:", message.toString());
-    if (topic.split("/")[1] == "directive") {
-        if (topic.split("/")[2] == "powerState") {
-            if (message.toString() == "ON") {
-                console.log("Turning pin ON")
-                LEDPin.writeSync(1);
-                client.publish(options.clientId + "/report/powerState", "ON");
-            } else {
-                console.log("Turning pin OFF")
-                LEDPin.writeSync(0);
-                client.publish(options.clientId + "/report/powerState", "OFF");
-            }
-
-        }
+function buttonStateChanged(value) {
+    ledPin.writeSync(value);
+    if (connected && value === 1) {
+        client.publish(options.clientId + "/report/detectionState", "true");
     }
-
-});
-
-function subscribeToDevice() {          //Subscribe
-    client.subscribe(options.clientId + "/#", { qos: 1 });
-    console.log("Subscribed to Device topic", options.clientId + "/#");
 }

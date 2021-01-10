@@ -1,0 +1,16 @@
+{
+  "name": "raspberry-smartnest",
+  "version": "1.0.0",
+  "description": "connects raspberry to Smartnest.cz",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Andres Sosa",
+  "license": "MIT",
+  "dependencies": {
+    "mqtt": "^4.0.0",
+    "onoff": "^6.0.0"
+  }
+}
