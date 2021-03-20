@@ -2,13 +2,14 @@
 #include <PubSubClient.h>  // Download and install this library first from: https://www.arduinolibraries.info/libraries/pub-sub-client
 #include <WiFiClient.h>
 
-#define SSID_NAME "Wifi-name"          // Your Wifi Network name
-#define SSID_PASSWORD "Wifi-password"  // Your Wifi network password
-#define MQTT_BROKER "smartnest.cz"     // Broker host
-#define MQTT_PORT 1883                 // Broker port
-#define MQTT_USERNAME "username"       // Username from Smartnest
-#define MQTT_PASSWORD "password"       // Password from Smartnest (or API key)
-#define MQTT_CLIENT "device-Id"        // Device Id from smartnest
+#define SSID_NAME "Wifi-name"                    // Your Wifi Network name
+#define SSID_PASSWORD "Wifi-password"            // Your Wifi network password
+#define MQTT_BROKER "smartnest.cz"               // Broker host
+#define MQTT_PORT 1883                           // Broker port
+#define MQTT_USERNAME "username"                 // Username from Smartnest
+#define MQTT_PASSWORD "password"                 // Password from Smartnest (or API key)
+#define MQTT_CLIENT "device-Id"                  // Device Id from smartnest
+#define FIRMWARE_VERSION "Example-motionSensor"  // Custom name for this program
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -26,6 +27,7 @@ void checkSensor();
 void checkMqtt();
 int splitTopic(char *topic, char *tokens[], int tokensNumber);
 void callback(char *topic, byte *payload, unsigned int length);
+void sendToBroker(char *topic, char *message);
 
 void setup() {
 	pinMode(sensorPin, INPUT);
@@ -117,13 +119,23 @@ void startMqtt() {
 		}
 	}
 
-	char topic[100];
-	sprintf(topic, "%s/#", MQTT_CLIENT);  // Sbscribes to the device Topic  device-Id/#
-	client.subscribe(topic);
+	char subscibeTopic[100];
+	sprintf(subscibeTopic, "%s/#", MQTT_CLIENT);
+	client.subscribe(subscibeTopic);  //Subscribes to all messages send to the device
 
-	sprintf(topic, "%s/report/online", MQTT_CLIENT);  // Reports that the device is online
-	client.publish(topic, "true");
-	delay(200);
+	sendToBroker("report/online", "true");  // Reports that the device is online
+	delay(100);
+	sendToBroker("report/firmware", FIRMWARE_VERSION);  // Reports the firmware version
+	delay(100);
+	sendToBroker("report/ip", (char *)WiFi.localIP().toString().c_str());  // Reports the ip
+	delay(100);
+	sendToBroker("report/network", (char *)WiFi.SSID().c_str());  // Reports the network name
+	delay(100);
+
+	char signal[5];
+	sprintf(signal, "%d", WiFi.RSSI());
+	sendToBroker("report/signal", signal);  // Reports the signal strength
+	delay(100);
 }
 
 int splitTopic(char *topic, char *tokens[], int tokensNumber) {
@@ -175,14 +187,18 @@ void turnOn() {
 
 void sendReport(bool value) {
 	if (millis() - sensorReportSent > 500 && sensorOn) {
-		char reportTopic[100];
-
-		sprintf(reportTopic, "%s/report/detectionState", MQTT_CLIENT);
 		if (value)
-			client.publish(reportTopic, "true");
+			sendToBroker("report/detectionState", "true");
 		else
-			client.publish(reportTopic, "false");
-
+			sendToBroker("report/detectionState", "false");
 		sensorReportSent = millis();
+	}
+}
+
+void sendToBroker(char *topic, char *message) {
+	if (client.connected()) {
+		char topicArr[100];
+		sprintf(topicArr, "%s/%s", MQTT_CLIENT, topic);
+		client.publish(topicArr, message);
 	}
 }

@@ -2,13 +2,14 @@
 #include <PubSubClient.h>  // Download and install this library first from: https://www.arduinolibraries.info/libraries/pub-sub-client
 #include <WiFiClient.h>
 
-#define SSID_NAME "Wifi-name"                   // Your Wifi Network name
-#define SSID_PASSWORD "Wifi-password"           // Your Wifi network password
-#define MQTT_BROKER "smartnest.cz"              // Broker host
-#define MQTT_PORT 1883                          // Broker port
-#define MQTT_USERNAME "username"                // Username from Smartnest
-#define MQTT_PASSWORD "password"                // Password from Smartnest (or API key)
-#define MQTT_CLIENT "device-Id"                 // Device Id from smartnest
+#define SSID_NAME "Wifi-name"                    // Your Wifi Network name
+#define SSID_PASSWORD "Wifi-password"            // Your Wifi network password
+#define MQTT_BROKER "smartnest.cz"               // Broker host
+#define MQTT_PORT 1883                           // Broker port
+#define MQTT_USERNAME "username"                 // Username from Smartnest
+#define MQTT_PASSWORD "password"                 // Password from Smartnest (or API key)
+#define MQTT_CLIENT "device-Id"                  // Device Id from smartnest
+#define FIRMWARE_VERSION "Tutorial-RelayModule"  // Custom name for this program
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -16,6 +17,7 @@ PubSubClient client(espClient);
 int switchPin1 = 0;
 int switchPin2 = 3;
 int switchPin3 = 5;
+int switchPin4 = 4;
 
 void startWifi();
 void startMqtt();
@@ -31,6 +33,7 @@ void setup() {
 	pinMode(switchPin1, OUTPUT);
 	pinMode(switchPin2, OUTPUT);
 	pinMode(switchPin3, OUTPUT);
+	pinMode(switchPin4, OUTPUT);
 	Serial.begin(115200);
 	startWifi();
 	startMqtt();
@@ -75,6 +78,12 @@ void callback(char* topic, byte* payload, unsigned int length) {  //A new messag
 				turnOn(3);
 			} else if (strcmp(message, "OFF") == 0) {
 				turnOff(3);
+			}
+		} else if (strcmp(tokens[2], "powerState4") == 0) {
+			if (strcmp(message, "ON") == 0) {
+				turnOn(4);
+			} else if (strcmp(message, "OFF") == 0) {
+				turnOff(4);
 			}
 		}
 	}
@@ -131,12 +140,23 @@ void startMqtt() {
 		}
 	}
 
-	char topic[100];
-	sprintf(topic, "%s/#", MQTT_CLIENT);
-	client.subscribe(topic);
+	char subscibeTopic[100];
+	sprintf(subscibeTopic, "%s/#", MQTT_CLIENT);
+	client.subscribe(subscibeTopic);  //Subscribes to all messages send to the device
 
 	sendToBroker("report/online", "true");  // Reports that the device is online
-	delay(200);
+	delay(100);
+	sendToBroker("report/firmware", FIRMWARE_VERSION);  // Reports the firmware version
+	delay(100);
+	sendToBroker("report/ip", (char*)WiFi.localIP().toString().c_str());  // Reports the ip
+	delay(100);
+	sendToBroker("report/network", (char*)WiFi.SSID().c_str());  // Reports the network name
+	delay(100);
+
+	char signal[5];
+	sprintf(signal, "%d", WiFi.RSSI());
+	sendToBroker("report/signal", signal);  // Reports the signal strength
+	delay(100);
 }
 
 int splitTopic(char* topic, char* tokens[], int tokensNumber) {
@@ -181,6 +201,10 @@ void turnOff(int pin) {
 		digitalWrite(switchPin3, LOW);
 		sendToBroker("report/powerState3", "OFF");
 		break;
+	case 4:
+		digitalWrite(switchPin4, LOW);
+		sendToBroker("report/powerState4", "OFF");
+		break;
 	}
 }
 
@@ -198,6 +222,10 @@ void turnOn(int pin) {
 	case 3:
 		digitalWrite(switchPin3, HIGH);
 		sendToBroker("report/powerState3", "ON");
+		break;
+	case 4:
+		digitalWrite(switchPin4, HIGH);
+		sendToBroker("report/powerState4", "ON");
 		break;
 	}
 }

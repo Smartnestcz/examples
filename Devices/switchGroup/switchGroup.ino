@@ -9,6 +9,7 @@
 #define MQTT_USERNAME "username"                // Username from Smartnest
 #define MQTT_PASSWORD "password"                // Password from Smartnest (or API key)
 #define MQTT_CLIENT "device-Id"                 // Device Id from smartnest
+#define FIRMWARE_VERSION "Example-switchGroup"  // Custom name for this program
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -16,6 +17,7 @@ PubSubClient client(espClient);
 int switchPin1 = 0;
 int switchPin2 = 3;
 int switchPin3 = 5;
+int switchPin4 = 4;
 
 void startWifi();
 void startMqtt();
@@ -55,7 +57,7 @@ void callback(char* topic, byte* payload, unsigned int length) {  //A new messag
 	Serial.print("Message:");
 	Serial.println(message);
 
-	//------------------ACTIONS HERE---------------------------------
+	//------------------ACTIONS HERE---------------------
 
 	if (strcmp(tokens[1], "directive") == 0) {
 		if (strcmp(tokens[2], "powerState1") == 0) {
@@ -75,6 +77,12 @@ void callback(char* topic, byte* payload, unsigned int length) {  //A new messag
 				turnOn(3);
 			} else if (strcmp(message, "OFF") == 0) {
 				turnOff(3);
+			}
+		} else if (strcmp(tokens[2], "powerState4") == 0) {
+			if (strcmp(message, "ON") == 0) {
+				turnOn(4);
+			} else if (strcmp(message, "OFF") == 0) {
+				turnOff(4);
 			}
 		}
 	}
@@ -136,7 +144,18 @@ void startMqtt() {
 	client.subscribe(topic);
 
 	sendToBroker("report/online", "true");  // Reports that the device is online
-	delay(200);
+	delay(100);
+	sendToBroker("report/firmware", FIRMWARE_VERSION);  // Reports the firmware version
+	delay(100);
+	sendToBroker("report/ip", (char*)WiFi.localIP().toString().c_str());  // Reports the ip
+	delay(100);
+	sendToBroker("report/network", (char*)WiFi.SSID().c_str());  // Reports the network name
+	delay(100);
+
+	char signal[5];
+	sprintf(signal, "%d", WiFi.RSSI());
+	sendToBroker("report/signal", signal);  // Reports the signal strength
+	delay(100);
 }
 
 int splitTopic(char* topic, char* tokens[], int tokensNumber) {
@@ -181,6 +200,12 @@ void turnOff(int pin) {
 		digitalWrite(switchPin3, LOW);
 		sendToBroker("report/powerState3", "OFF");
 		break;
+	case 4:
+		digitalWrite(switchPin4, LOW);
+		sendToBroker("report/powerState4", "OFF");
+		break;
+	default:
+		break;
 	}
 }
 
@@ -198,6 +223,12 @@ void turnOn(int pin) {
 	case 3:
 		digitalWrite(switchPin3, HIGH);
 		sendToBroker("report/powerState3", "ON");
+		break;
+	case 4:
+		digitalWrite(switchPin4, HIGH);
+		sendToBroker("report/powerState4", "ON");
+		break;
+	default:
 		break;
 	}
 }
