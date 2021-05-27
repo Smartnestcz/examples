@@ -34,7 +34,7 @@ void loop() {
 	checkMqtt();
 }
 
-void callback(char *topic, byte *payload, unsigned int length) {  //A new message has been received
+void callback(char *topic, byte *payload, unsigned int length) {  //Callback for new messages
 	Serial.print("Topic:");
 	Serial.println(topic);
 	int tokensNumber = 10;
@@ -55,13 +55,13 @@ void callback(char *topic, byte *payload, unsigned int length) {  //A new messag
 			digitalWrite(switchPin, HIGH);
 			delay(400);
 			digitalWrite(switchPin, LOW);
-			void sendToBroker("report/powerState", "ON")
+			sendToBroker("report/powerState", "ON")
 
 		} else if (strcmp(message, "OFF") == 0) {
 			digitalWrite(switchPin, HIGH);
 			delay(400);
 			digitalWrite(switchPin, LOW);
-			void sendToBroker("report/powerState", "OFF")
+			sendToBroker("report/powerState", "OFF")
 		}
 	}
 }
