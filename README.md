@@ -1,4 +1,5 @@
 ![Smartnest Logo](https://www.smartnest.cz/img/Logo-vector-login.png)
+
 # Smartnest
 Smartnest is a web service that allows you to connect your Arduino, ESP and other development boards to voice assistants like Amazon Alexa, Google Assistant, Siri, IFTTT and more.
 
@@ -37,7 +38,7 @@ Download and install from https://github.com/knolleary/pubsubclient
 
 ## [Documentation in English](https://www.docu.smartnest.cz)
 ## [Documentation in Spanish](https://www.documentacion.smartnest.cz)
-## [Donations: Thank you!](https://www.smartnest.cz/donate)
+## [Buy me a coffe](https://www.buymeacoffee.com/andressosam)
 
 
 Future developments:
